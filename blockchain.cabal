@@ -25,6 +25,7 @@ source-repository head
 
 library
   exposed-modules:
+      EllipticCurve
       FiniteField
       Lib
   other-modules:
@@ -58,6 +59,7 @@ test-suite blockchain-test
   type: exitcode-stdio-1.0
   main-is: Spec.hs
   other-modules:
+      TestEllipticCurve
       TestFiniteField
       Paths_blockchain
   autogen-modules:

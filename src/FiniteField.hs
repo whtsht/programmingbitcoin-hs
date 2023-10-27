@@ -20,14 +20,18 @@ class Field a where
   -- power
   (|^) :: a -> Int -> a
 
+instance Field Int where
+  (|+) = (+)
+  (|-) = (-)
+  (|*) = (*)
+  (|/) = div
+  (|^) = (^)
+
 data Element = Element
   { num :: Int,
     prime :: Int
   }
-  deriving (Eq)
-
-instance Show Element where
-  show a = "Element " ++ show (num a)
+  deriving (Show, Eq)
 
 modExp :: Int -> Int -> Int -> Int
 modExp _ 0 _ = 1
