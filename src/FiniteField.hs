@@ -5,10 +5,19 @@ module FiniteField
 where
 
 class Field a where
+  -- addition
   (|+) :: a -> a -> a
+
+  -- subtraction
   (|-) :: a -> a -> a
+
+  -- multiplication
   (|*) :: a -> a -> a
+
+  -- division
   (|/) :: a -> a -> a
+
+  -- power
   (|^) :: a -> Int -> a
 
 data Element = Element
