@@ -25,9 +25,12 @@ source-repository head
 
 library
   exposed-modules:
+      ECDSA
       EllipticCurve
       FiniteField
+      Hash
       Lib
+      Secp256k1
   other-modules:
       Paths_blockchain
   autogen-modules:
@@ -38,6 +41,9 @@ library
   build-depends:
       HUnit
     , base >=4.7 && <5
+    , bytestring
+    , cryptohash
+    , random
   default-language: Haskell2010
 
 executable blockchain-exe
@@ -53,6 +59,9 @@ executable blockchain-exe
       HUnit
     , base >=4.7 && <5
     , blockchain
+    , bytestring
+    , cryptohash
+    , random
   default-language: Haskell2010
 
 test-suite blockchain-test
@@ -61,6 +70,8 @@ test-suite blockchain-test
   other-modules:
       TestEllipticCurve
       TestFiniteField
+      TestHash
+      TestSecp256k1
       Paths_blockchain
   autogen-modules:
       Paths_blockchain
@@ -71,4 +82,7 @@ test-suite blockchain-test
       HUnit
     , base >=4.7 && <5
     , blockchain
+    , bytestring
+    , cryptohash
+    , random
   default-language: Haskell2010

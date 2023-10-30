@@ -13,7 +13,7 @@ eq = assertEqual ""
 
 testAdd0 :: Assertion
 testAdd0 = do
-  let a = Infinite (5 :: Int) 7
+  let a = Infinite (5 :: Integer) 7
   let b = Finite 2 5 5 7
   let c = Finite 2 (-5) 5 7
   eq (a `add` b) b
@@ -22,11 +22,11 @@ testAdd0 = do
 
 testAdd1 :: Assertion
 testAdd1 = do
-  let a = Finite (3 :: Int) 7 5 7
+  let a = Finite (3 :: Integer) 7 5 7
   let b = Finite (-1) (-1) 5 7
   eq (a `add` b) (Finite 2 (-5) 5 7)
 
 testAdd2 :: Assertion
 testAdd2 = do
-  let a = Finite (-1 :: Int) (-1) 5 7
+  let a = Finite (-1 :: Integer) (-1) 5 7
   eq (a `add` a) (Finite 18 77 5 7)

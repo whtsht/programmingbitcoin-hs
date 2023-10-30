@@ -1,8 +1,9 @@
 {-# OPTIONS_GHC -Wno-name-shadowing #-}
 {-# OPTIONS_GHC -Wno-partial-fields #-}
 
-module EllipticCurve (Point (..), add) where
+module EllipticCurve (Point (..), add, scale) where
 
+import Data.Bits (shiftR)
 import FiniteField (Field (..))
 
 data Point v
@@ -32,3 +33,15 @@ add p1 p2 =
           let x3 = (s |^ 2) |- (x1 |+ x1)
           let y3 = (s |* (x1 |- x3)) |- y1
           Finite x3 y3 a b
+
+scale :: (Field v, Eq v) => Point v -> Integer -> Point v
+scale a b = scale_ a a b
+  where
+    scale_ :: (Field v, Eq v) => Point v -> Point v -> Integer -> Point v
+    scale_ a _ 0 = case a of
+      Finite _ _ a b -> Infinite a b
+      i -> i
+    scale_ a r b =
+      if b `mod` 2 == 1
+        then r `add` scale_ a (r `add` r) (b `shiftR` 1)
+        else scale_ a (r `add` r) (b `shiftR` 1)
