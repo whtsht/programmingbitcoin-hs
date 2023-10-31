@@ -1,4 +1,4 @@
 module Main (main) where
 
 main :: IO ()
-main = putStrLn "Hello BlockChain!"
+main = putStrLn "Programming Bitcoin in Haskell"
